@@ -1,7 +1,7 @@
-Simple Javascript Example
-=========================
+Simple Rails Javascript Example
+===============================
 
-Just a simple example using Javascript.
+Just a simple Rails example using Javascript.
 
 Currently in the thing show page the count up and down buttons increment
 the counter using JS responses; see countup.js.erb and countdown.js.erb.
