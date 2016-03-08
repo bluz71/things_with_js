@@ -14,12 +14,12 @@ A simple Rails example with some Javascript action:
     should be used exclusively for styling.
 
   * Any _ajax:error_ event will be logged to the console in the _things.coffee_
-    file. This will help debug an JavaScript errors in the JS view files.
+    file. This will help debug JavaScript errors in the JS view files.
 
   * Setup body tag with controller and action name. This will allow per-page
     scoping for always-on Javascript. To limit always-on triggered use a
     CoffeeScript segment such as this:
 
-      `$(document).on "page:change", ->
-      return unless $(".posts.index").length > 0 f = new App.Chart $("#chart")
+      `$(document).on "page:change", ->  
+      return unless $(".posts.index").length > 0 f = new Tod $("#todo")  
       f.render()`
