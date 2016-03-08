@@ -20,7 +20,7 @@ A simple Rails example with some Javascript action:
     scoping for always-on Javascript. To limit always-on triggered use a
     CoffeeScript segment such as this:
 
-      `$(document).on "ready page:change", ->`  
-      `  return unless $(".todo.index").length > 0`  
-      `  todo = new Todo($("#todo"))`  
-      `  todo.render()`
+        $(document).on "ready page:change", ->
+          return unless $(".todo.index").length > 0
+          todo = new Todo($("#todo"))
+          todo.render()
