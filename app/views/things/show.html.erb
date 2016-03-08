@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @thing.name %>
-</p>
+<div class="row">
+  <div class="well">
+    <p>
+      <strong>Name:</strong>
+      <%= @thing.name %>
+    </p>
 
-<p>
-  <strong>Count:</strong>
-  <span data-behavior="thing-counter"><%= @thing.count %></span>
-</p>
+    <p>
+      <strong>Count:</strong>
+      <span data-behavior="thing-counter"><%= @thing.count %></span>
+    </p>
+  </div>
+</div>
 <hr>
 <%= link_to "Count Up", countup_thing_path(@thing), class: "btn btn-default btn-small", method: :patch, remote: true %>
 <%= link_to "Count Down", countdown_thing_path(@thing), class: "btn btn-default btn-small", method: :patch, remote: true %>

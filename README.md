@@ -1,12 +1,25 @@
 Simple Rails Javascript Example
 ===============================
 
-Just a simple Rails example using Javascript.
+A simple Rails example with some Javascript action:
 
-Currently in the thing show page the count up and down buttons increment
-the counter using JS responses; see countup.js.erb and countdown.js.erb.
+  * The _Count Up_ and _Count Down_ buttons on the **Things** show page are
+    defined as remote:true and when clicked will request a JS response from the
+    **Things** controller. The _countup.js.erb_ and _countdown.js.erb_ views
+    will be returned and evaled on the client-side.
 
-A "data-behavior" attribute is used to target the counter.
+  * The JS response for the  _Count Up_ and _Count Down_ buttons will modify
+    the count span denoted by a _data-behavior_ attribute. When targetting
+    an element with Javascript it is best not to use classes or IDs since those
+    should be used exclusively for styling.
 
-Note, in things.coffee the "ajax:error" event will be listened on in case of
-syntax errors in the JS responses.
+  * Any _ajax:error_ event will be logged to the console in the _things.coffee_
+    file. This will help debug an JavaScript errors in the JS view files.
+
+  * Setup body tag with controller and action name. This will allow per-page
+    scoping for always-on Javascript. To limit always-on triggered use a
+    CoffeeScript segment such as this:
+
+      `$(document).on "page:change", ->
+      return unless $(".posts.index").length > 0 f = new App.Chart $("#chart")
+      f.render()`
