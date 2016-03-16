@@ -3,7 +3,7 @@ Simple Rails Javascript Example
 
 A simple Rails example with some Javascript action:
 
-  * The _Count Up_ and _Count Down_ buttons on the **Things** show page are
+  * The _Count Up_ and _Count Down_ buttons on the **Thing** show page are
     defined as remote:true and when clicked will request a JS response from the
     **Things** controller. The _countup.js.erb_ and _countdown.js.erb_ views
     will be returned and evaled on the client-side.
@@ -24,3 +24,13 @@ A simple Rails example with some Javascript action:
           return unless $(".todo.index").length > 0
           todo = new Todo($("#todo"))
           todo.render()
+
+  * The _New Thing_ button on the **Things** index page, when clicked, will load
+    up the **Thing** form and hide the _New Thing_ button both via a Javascript
+    response triggered by the remote: true attribute attached to the _New Thing_
+    link.
+
+  * The _Submit_ button to create a new **Thing** will trigger a JS response
+    that: removes the form, shows the _New Thing_ button and appends the newly
+    created **Thing** to the **Things** table via a partial.
+

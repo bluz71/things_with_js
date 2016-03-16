@@ -11,21 +11,15 @@
         </tr>
       </thead>
 
-      <tbody>
-        <% @things.each do |thing| %>
-          <tr>
-            <td><%= thing.name %></td>
-            <td><%= thing.count %></td>
-            <td><%= link_to 'Show', thing, class: "btn btn-info btn-sm" %></td>
-            <td><%= link_to 'Edit', edit_thing_path(thing), class: "btn btn-success btn-sm" %></td>
-            <td><%= link_to 'Destroy', thing, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
+      <tbody data-behavior="things-table">
+        <%= render @things %>
       </tbody>
     </table>
   </div>
 </div>
 
 <div class="row">
-  <%= link_to 'New Thing', new_thing_path, class: "btn btn-default btn-lg" %>
+  <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-default btn-lg", data: {behavior: "thing-new-button"} %>
 </div>
+
+<div data-behavior="thing-form-location"></div>

@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" data-behavior="thing-form">
   <div class="col-md-6">
-    <%= form_for(@thing) do |f| %>
+    <%= form_for(@thing, remote: true) do |f| %>
       <% if @thing.errors.any? %>
         <div class="alert alert-danger">
           <ul>

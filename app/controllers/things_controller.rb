@@ -1,23 +1,21 @@
 class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :edit, :update, :destroy, :countup, :countdown]
 
-  # GET /things
-  # GET /things.json
   def index
     @things = Thing.all
   end
 
-  # GET /things/1
-  # GET /things/1.json
   def show
   end
 
-  # GET /things/new
   def new
     @thing = Thing.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  # GET /things/1/edit
   def edit
   end
 
@@ -25,8 +23,13 @@ class ThingsController < ApplicationController
     @thing = Thing.new(thing_params)
 
     if @thing.save
-      flash[:success] = "#{@thing.name} was successfully created"
-      redirect_to @thing
+      respond_to do |format|
+        format.html do
+          flash[:success] = "#{@thing.name} was successfully created"
+          redirect_to @thing
+        end
+        format.js
+      end
     else
       render :new
     end
