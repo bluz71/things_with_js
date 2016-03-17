@@ -37,8 +37,13 @@ class ThingsController < ApplicationController
 
   def update
     if @thing.update(thing_params)
-      flash[:success] = "#{@thing.name} was successfully updated"
-      redirect_to @thing
+      respond_to do |format|
+        format.html do
+          flash[:success] = "#{@thing.name} was successfully updated"
+          redirect_to @thing
+        end
+        format.js
+      end
     else
       render :edit
     end

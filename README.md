@@ -34,3 +34,6 @@ A simple Rails example with some Javascript action:
     that: removes the form, shows the _New Thing_ button and appends the newly
     created **Thing** to the **Things** table via a partial.
 
+  * The _Edit_ action upon submission does a Javascript redirection by setting
+    the _window.location_ property.
+
