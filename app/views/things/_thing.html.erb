@@ -1,7 +1,7 @@
-<tr>
+<tr data-behavior="thing-table-row-<%= thing.id %>">
   <td><%= thing.name %></td>
   <td><%= thing.count %></td>
   <td><%= link_to 'Show', thing, class: "btn btn-info btn-xs" %></td>
   <td><%= link_to 'Edit', edit_thing_path(thing), class: "btn btn-success btn-xs" %></td>
-  <td><%= link_to 'Destroy', thing, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Destroy', thing, remote: true, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

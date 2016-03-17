@@ -51,8 +51,13 @@ class ThingsController < ApplicationController
 
   def destroy
     @thing.destroy
-    flash[:success] = "#{@thing.name} was successfully destroyed"
-    redirect_to things_url
+    respond_to do |format|
+      format.html do
+        flash[:success] = "#{@thing.name} was successfully destroyed"
+        redirect_to things_url
+      end
+      format.js
+    end
   end
 
   # JS response.
