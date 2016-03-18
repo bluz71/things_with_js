@@ -37,3 +37,9 @@ A simple Rails example with some Javascript action:
   * The _Edit_ action upon submission does a Javascript redirection by invoking
     the _replace action on the _window.location_ property.
 
+  * The **Thing** model has server side validation for name presence and name
+    length greater than four characters. That same validation also occurs
+    client-side via the JavaScript. Those validations are contained in the
+    _things.coffee_ file in the assets/javascripts directory. The actual
+    validation occurs via the  _on blur_ and _on focus_ events for the name
+    input field.
