@@ -10,7 +10,7 @@
           </ul>
         </div>
       <% end %>
-
+      <div class="alert alert-danger" data-behavior="thing-name-error"></div>
       <div class="field form-group">
         <%= f.label :name %><br>
         <%= f.text_field :name, class: "form-control" %>
@@ -23,8 +23,5 @@
         <%= f.submit "Submit", class: "btn btn-primary" %>
       </div>
     <% end %>
-  </div>
-  <div class="col-md-6">
-    <span data-behavior="thing-name-error"></span>
   </div>
 </div>
