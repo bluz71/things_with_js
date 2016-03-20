@@ -19,10 +19,6 @@ class ThingValidator
 $(document).on "page:change", ->
   new ThingValidator() if $(".things.index").length > 0
 
-$(document).on "page:change", (event, data, status, xhr)->
+$(document).on "page:change", ->
   $("[data-behavior~=thing-new-button").on "ajax:success", ->
     $("[data-behavior~=thing-name-error]").hide()
-
-$(document).on "ajax:error", (event, xhr, status, error) ->
-  console.log status.responseText
-  console.log error
