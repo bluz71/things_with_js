@@ -13,8 +13,9 @@ A simple Rails example with some Javascript action:
     an element with Javascript it is best not to use classes or IDs since those
     should be used exclusively for styling.
 
-  * Any _ajax:error_ event will be logged to the console in the _things.coffee_
-    file. This will help debug JavaScript errors in the JS view files.
+  * Any _ajax:error_ event will be logged to the console in the
+    _application.js_ file. This will help debug JavaScript errors in the JS
+    view files.
 
   * Setup body tag with controller and action name. This will allow per-page
     scoping for always-on Javascript. To limit always-on triggered use a
@@ -29,6 +30,9 @@ A simple Rails example with some Javascript action:
     up the **Thing** form and hide the _New Thing_ button both via a Javascript
     response triggered by the remote: true attribute attached to the _New Thing_
     link.
+
+  * A _cancel_ button will remove the **Thing** form and redisplay the
+    _New Thing_ button.
 
   * The _Submit_ button to create a new **Thing** will trigger a JS response
     that: removes the form, shows the _New Thing_ button and appends the newly
