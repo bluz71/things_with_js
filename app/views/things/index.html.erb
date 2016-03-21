@@ -19,7 +19,7 @@
 </div>
 
 <div class="row">
-  <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-default btn-lg", data: {behavior: "thing-new-button"} %>
+  <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-default btn-lg", data: {behavior: "thing-new"} %>
+  <div data-behavior="thing-form-location"></div>
+  <%= button_tag "Cancel", id: "thing-new-cancel", class: "btn btn-warning btn-xs", data: {behavior: "thing-new-cancel"} %>
 </div>
-
-<div data-behavior="thing-form-location"></div>

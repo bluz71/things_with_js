@@ -1,8 +1,18 @@
 class ThingValidator
   constructor: ->
+    @initHiddenNameError()
+    @initHiddenCancelButton()
     $(document).on "blur", "#thing_name", @handleBlur
     $(document).on "focus", "#thing_name", @handleFocus
+    $(document).on "click", "[data-behavior~=thing-new-cancel]", @handleCancel
     @errorSet = false
+
+  initHiddenNameError: ->
+    $("[data-behavior~=thing-new").on "ajax:success", ->
+      $("[data-behavior~=thing-name-error]").hide()
+
+  initHiddenCancelButton: ->
+    $("[data-behavior~=thing-new-cancel]").hide()
 
   handleBlur: =>
     thingName = $("#thing_name").val()
@@ -16,9 +26,10 @@ class ThingValidator
       @errorSet = false
       $("[data-behavior~=thing-name-error]").hide()
 
-$(document).on "page:change", ->
-  new ThingValidator() if $(".things.index").length > 0
+  handleCancel: ->
+    $("[data-behavior~=thing-new-cancel]").hide()
+    $("[data-behavior~=thing-new]").show();
+    $("[data-behavior~=thing-form-location]").text("")
 
 $(document).on "page:change", ->
-  $("[data-behavior~=thing-new-button").on "ajax:success", ->
-    $("[data-behavior~=thing-name-error]").hide()
+  new ThingValidator() if $(".things.index").length > 0
