@@ -1,35 +1,58 @@
-class ThingValidator
+class Thing
   constructor: ->
-    @initHiddenNameError()
-    @initHiddenCancelButton()
-    $(document).on "blur", "#thing_name", @handleBlur
-    $(document).on "focus", "#thing_name", @handleFocus
-    $(document).on "click", "[data-behavior~=thing-new-cancel]", @handleCancel
+    @hideNameError()
+    @hideCancelButton()
+    @setEventHandlers()
     @errorSet = false
 
-  initHiddenNameError: ->
-    $("[data-behavior~=thing-new").on "ajax:success", ->
-      $("[data-behavior~=thing-name-error]").hide()
+  # Hide the name error alert area for the "New Thing" form. Note, the "New
+  # Thing" form will be dynamically loaded by Ajax hence the hiding needs
+  # to be done via an "ajax:success" callback triggered by button click that
+  # loads the form.
+  #
+  # "page:change" is needed for turbolinks page navigation and loading.
+  hideNameError: ->
+    $(document).on "page:change", ->
+      $("[data-behavior~=thing-new").on "ajax:success", ->
+        $("[data-behavior~=thing-name-error]").hide()
 
-  initHiddenCancelButton: ->
-    $("[data-behavior~=thing-new-cancel]").hide()
+  # The cancel button exists on the index.html page, hence it can be hidden
+  # immediately unlike the name error above.
+  #
+  # "page:change" is needed for turbolinks page navigation and loading.
+  hideCancelButton: ->
+    $(document).on "page:change", ->
+      $("[data-behavior~=thing-new-cancel]").hide()
 
-  handleBlur: =>
+  setEventHandlers: ->
+    $(document).on "blur", "#thing_name", @thingNameBlur
+    $(document).on "focus", "#thing_name", @thingNameFocus
+    $(document).on "click", "[data-behavior~=thing-new-cancel]", @newThingCancel
+    $(document).on "click", "[data-behavior~=thing-name-style]", @thingNameStyle
+
+  thingNameBlur: =>
     thingName = $("#thing_name").val()
     if !@errorSet && thingName.length < 4
       @errorSet = true
       $("[data-behavior~=thing-name-error]").text("Name is too short (miminum is 4 characters)")
       $("[data-behavior~=thing-name-error]").show()
 
-  handleFocus: =>
+  thingNameFocus: =>
     if @errorSet
       @errorSet = false
       $("[data-behavior~=thing-name-error]").hide()
 
-  handleCancel: ->
+  newThingCancel: ->
     $("[data-behavior~=thing-new-cancel]").hide()
     $("[data-behavior~=thing-new]").show();
     $("[data-behavior~=thing-form-location]").text("")
 
-$(document).on "page:change", ->
-  new ThingValidator() if $(".things.index").length > 0
+  thingNameStyle: ->
+    id = $(this).val()
+    tr = $("[data-behavior~=thing-table-row-#{id}]")
+    tr.find("[data-behavior~=thing-name-cell]").toggleClass("thing-name-style")
+
+# Note, jQuery -> is the same as $ -> which is the same as $(document).ready ->
+# All those syntaxes wait for the DOM to fully load.
+jQuery ->
+  new Thing()

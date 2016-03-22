@@ -1,3 +1,4 @@
 $("[data-behavior~=thing-form]").remove();
-$("[data-behavior~=thing-new-button").show();
-$("[data-behavior~=things-table").append("<%= j render @thing %>");
+$("[data-behavior~=thing-new-cancel]").hide()
+$("[data-behavior~=thing-new]").show();
+$("[data-behavior~=things-table]").append("<%= j render @thing %>");

@@ -17,14 +17,7 @@ A simple Rails example with some Javascript action:
     _application.js_ file. This will help debug JavaScript errors in the JS
     view files.
 
-  * Setup body tag with controller and action name. This will allow per-page
-    scoping for always-on Javascript. To limit always-on triggered use a
-    CoffeeScript segment such as this:
-
-        $(document).on "ready page:change", ->
-          return unless $(".todo.index").length > 0
-          todo = new Todo($("#todo"))
-          todo.render()
+  * Setup body tag with controller and action name.
 
   * The _New Thing_ button on the **Things** index page, when clicked, will load
     up the **Thing** form and hide the _New Thing_ button both via a Javascript
@@ -47,3 +40,7 @@ A simple Rails example with some Javascript action:
     _things.coffee_ file in the assets/javascripts directory. The actual
     validation occurs via the  _on blur_ and _on focus_ events for the name
     input field.
+
+  * The style checkbox will toggle the background and text style of the
+    **Thing** name in the table contained on the index page. This is done
+    client side only via JavaScript.

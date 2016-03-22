@@ -19,7 +19,7 @@
 // for JS responses to remote:true forms and links that contain syntax errors.
 $(document).on("ajax:error", function(event, xhr, status, error) {
   console.log(status.responseText);
-  console.log(error);
+  return console.log(error);
 });
 
 // The CoffeeScript version of the above "ajax:error" handler.
