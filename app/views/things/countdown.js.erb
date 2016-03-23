@@ -1,1 +1,1 @@
-$("[data-behavior~='thing-counter']").text("<%= @thing.count %>");
+$("[data-behavior~='thing-counter-<%= @thing.id %>']").text("<%= @thing.count %>");

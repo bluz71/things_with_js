@@ -1,8 +1,10 @@
 <tr data-behavior="thing-table-row-<%= thing.id %>">
   <td data-behavior="thing-name-cell"><%= thing.name %></td>
-  <td><%= thing.count %></td>
+  <td data-behavior="thing-counter-<%= thing.id %>"><%= thing.count %></td>
   <td><%= check_box_tag "thing_name_style", thing.id, false, data: {behavior: "thing-name-style"} %></td>
   <td><%= link_to 'Show', thing, class: "btn btn-info btn-xs" %></td>
   <td><%= link_to 'Edit', edit_thing_path(thing), class: "btn btn-success btn-xs" %></td>
   <td><%= link_to 'Destroy', thing, remote: true, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to "Count Up", countup_thing_path(thing), class: "btn btn-warning btn-xs", method: :patch, remote: true %></td>
+  <td><%= link_to "Count Down", countdown_thing_path(thing), class: "btn btn-primary btn-xs", method: :patch, remote: true %></td>
 </tr>
