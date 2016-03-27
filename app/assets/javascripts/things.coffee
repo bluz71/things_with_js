@@ -9,12 +9,9 @@ class Thing
   # Thing" form will be dynamically loaded by Ajax hence the hiding needs
   # to be done via an "ajax:success" callback triggered by button click that
   # loads the form.
-  #
-  # "page:change" is needed for turbolinks page navigation and loading.
   hideNameError: ->
-    $(document).on "page:change", ->
-      $("[data-behavior~=thing-new").on "ajax:success", ->
-        $("[data-behavior~=thing-name-error]").hide()
+    $(document).on "ajax:success", "[data-behavior~=thing-new]", ->
+      $("[data-behavior~=thing-name-error]").hide()
 
   # The cancel button exists on the index.html page, hence it can be hidden
   # immediately unlike the name error above.
@@ -29,6 +26,7 @@ class Thing
     $(document).on "focus", "#thing_name", @thingNameFocus
     $(document).on "click", "[data-behavior~=thing-new-cancel]", @newThingCancel
     $(document).on "click", "[data-behavior~=thing-name-style]", @thingNameStyle
+    $(document).on "click", "[data-behavior~=json-thing-render]", @jsonThingRender
 
   thingNameBlur: =>
     thingName = $("#thing_name").val()
@@ -51,6 +49,20 @@ class Thing
     id = $(this).val()
     tr = $("[data-behavior~=thing-table-row-#{id}]")
     tr.find("[data-behavior~=thing-name-cell]").toggleClass("thing-name-style")
+
+  jsonThingRender: =>
+    $.ajax(
+      url: "/json_thing/thing/rendered",
+      method: "GET",
+      dataType: "json",
+      success: @appendJsonThing)
+
+  appendJsonThing: (thing) ->
+    $("[data-behavior~=json-thing-render-list]").append(
+      """<li>
+           <strong>Name:</strong> <em>#{thing.name}</em>
+           <strong>count:</strong> <em>#{thing.count}</em>
+         </li>""")
 
 # Note, jQuery -> is the same as $ -> which is the same as $(document).ready ->
 # All those syntaxes wait for the DOM to fully load.

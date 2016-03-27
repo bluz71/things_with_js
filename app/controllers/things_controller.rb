@@ -1,5 +1,6 @@
 class ThingsController < ApplicationController
-  before_action :set_thing, only: [:show, :edit, :update, :destroy, :countup, :countdown]
+  before_action :set_thing, only: [:show, :edit, :update, :destroy, 
+                                   :countup, :countdown]
 
   def index
     @things = Thing.all

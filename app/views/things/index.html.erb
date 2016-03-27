@@ -16,11 +16,19 @@
         <%= render @things %>
       </tbody>
     </table>
+    <div class="well">
+      <h3>Ajax Json Things</h3>
+      <ul data-behavior="json-thing-render-list"></ul>
+      <%= link_to "Thing Render", "#", class: "btn btn-primary btn-small", data: {behavior: "json-thing-render"} %>
+      <%= button_tag "Thing Jbuilder", class: "btn btn-success btn-small" %>
+      <%= button_tag "Thing Collection", class: "btn btn-primary btn-small" %>
+      <%= button_tag "Thing Clear", class: "btn btn-success btn-small" %>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-default btn-lg", data: {behavior: "thing-new"} %>
+<div class="row spacer-sm">
+  <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-primary btn-lg", data: {behavior: "thing-new"} %>
   <div data-behavior="thing-form-location"></div>
-  <%= button_tag "Cancel", id: "thing-new-cancel", class: "btn btn-warning btn-xs", data: {behavior: "thing-new-cancel"} %>
+  <%= link_to "Cancel", "#", class: "btn btn-warning btn-xs spacer-md", data: {behavior: "thing-new-cancel"} %>
 </div>

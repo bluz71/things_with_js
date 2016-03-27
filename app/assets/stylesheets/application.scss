@@ -16,8 +16,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#thing-new-cancel {
-  margin-top: 10px;
+.spacer-xs {
+  margin-top: 0.5em;
+}
+
+.spacer-sm {
+  margin-top: 1em;
+}
+
+.spacer-md {
+  margin-top: 1.5em;
+}
+
+.spacer-lg {
+  margin-top: 2em;
+}
+
+.spacer-xl {
+  margin-top: 3em;
 }
 
 .thing-name-style {
