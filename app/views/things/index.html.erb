@@ -19,10 +19,11 @@
     <div class="well">
       <h3>Ajax Json Things</h3>
       <ul data-behavior="json-thing-render-list"></ul>
-      <%= link_to "Thing Render", "#", class: "btn btn-primary btn-small", data: {behavior: "json-thing-render"} %>
-      <%= button_tag "Thing Jbuilder", class: "btn btn-success btn-small" %>
-      <%= button_tag "Thing Collection", class: "btn btn-primary btn-small" %>
-      <%= button_tag "Thing Clear", class: "btn btn-success btn-small" %>
+      <%= button_tag "Thing Render", class: "btn btn-primary btn-xs", data: {behavior: "json-thing-render"} %>
+      <%= button_tag "Thing Jbuilder", class: "btn btn-success btn-xs", data: {behavior: "json-thing-jbuilder"} %>
+      <%= button_tag "Thing Collection", class: "btn btn-primary btn-xs", data: {behavior: "json-thing-collection"} %>
+      <%= button_tag "Interval", class: "btn btn-info btn-xs", data: {behavior: "json-thing-interval"} %>
+      <%= button_tag "Clear", class: "btn btn-danger btn-xs", data: {behavior: "json-thing-clear"} %>
     </div>
   </div>
 </div>
