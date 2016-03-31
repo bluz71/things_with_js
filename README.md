@@ -44,3 +44,21 @@ A simple Rails example with some Javascript action:
   * The style checkbox will toggle the background and text style of the
     **Thing** name in the table contained on the index page. This is done
     client side only via JavaScript.
+
+  * The **Ajax Json Things** section has the following actions
+
+    1. _Thing Render_, issues an AJAX call from _things.coffee_ to the json
+       _things_controller.rb_ controller which returns a rendered JSON thing
+       object which is then inserted onto the page.
+
+    2. _Thing Jbuilder_, like the render action above except the JSON object
+       will be created via Jbuilder view.
+
+    3. _Thing Collection_, like the Jbuilder action above except a collection
+       of JSON objects will be sent from the server to the client.
+
+    4. _Interval_, starts a timer than creates a client-side object and then
+       adds adds it to the page every 1.5 seconds.
+
+    5. _Reset_, clears all the Json Thing objects added to the page as well as
+       disabling the interval timer.

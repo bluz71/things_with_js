@@ -30,7 +30,7 @@ class Thing
     $(document).on "click", "[data-behavior~=json-thing-jbuilder]", @jsonThingJbuilder
     $(document).on "click", "[data-behavior~=json-thing-collection]", @jsonThingCollection
     $(document).on "click", "[data-behavior~=json-thing-interval]", @jsonThingInterval
-    $(document).on "click", "[data-behavior~=json-thing-clear]", @jsonThingClear
+    $(document).on "click", "[data-behavior~=json-thing-reset]", @jsonThingReset
 
   thingNameBlur: (event) =>
     thingName = $("#thing_name").val()
@@ -66,7 +66,7 @@ class Thing
   jsonThingInterval: (event) =>
     @interval = setInterval(@addThing, 1500)
 
-  jsonThingClear: (event) =>
+  jsonThingReset: (event) =>
     $("[data-behavior~=json-thing-render-list]").empty()
     clearInterval(@interval) if @interval?
 
