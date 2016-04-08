@@ -31,5 +31,5 @@
 <div class="row spacer-sm">
   <%= link_to 'New Thing', new_thing_path, remote: true, class: "btn btn-primary btn-lg", data: {behavior: "thing-new"} %>
   <div data-behavior="thing-form-location"></div>
-  <%= link_to "Cancel", "#", class: "btn btn-warning btn-xs spacer-md", data: {behavior: "thing-new-cancel"} %>
+  <%= link_to "Cancel", "#", class: "btn btn-warning btn-xs spacer-md", data: {behavior: "thing-new-cancel"}, style: "display: none" %>
 </div>

@@ -1,26 +1,10 @@
 class Thing
   constructor: ->
-    @hideNameError()
-    @hideCancelButton()
     @setEventHandlers()
     @errorSet = false
 
-  # Hide the name error alert area for the "New Thing" form. Note, the "New
-  # Thing" form will be dynamically loaded by Ajax hence the hiding needs
-  # to be done via an "ajax:success" callback triggered by button click that
-  # loads the form.
-  hideNameError: ->
-    $(document).on "ajax:success", "[data-behavior~=thing-new]", ->
-      $("[data-behavior~=thing-name-error]").hide()
-
-  # The cancel button exists on the index.html page, hence it can be hidden
-  # immediately unlike the name error above.
-  #
-  # "page:change" is needed for turbolinks page navigation and loading.
-  hideCancelButton: ->
-    $(document).on "page:change", ->
-      $("[data-behavior~=thing-new-cancel]").hide()
-
+  # Note, '$(document).on "event", "selector", handler' is required for correct
+  # event triggering for dynamic elements with Turbolinks in effect.
   setEventHandlers: ->
     $(document).on "blur", "#thing_name", @thingNameBlur
     $(document).on "focus", "#thing_name", @thingNameFocus
