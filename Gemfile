@@ -24,7 +24,7 @@ end
 ## Customizations.
 ##
 
-ruby '2.2.4'
+ruby '2.3.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
